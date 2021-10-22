@@ -20,5 +20,4 @@ class UserProfile(models.Model):
     address = models.CharField(
         'address', max_length=100, blank=True, default='')
     image = models.ImageField(
-        upload_to='images/%Y/%n', default='images/default.png', max_lenght=100, verbose_name='profile_img')
-    
+        upload_to='images/%Y/%n', default='images/default.png', max_length=100, verbose_name='profile_img')
