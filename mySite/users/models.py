@@ -21,3 +21,10 @@ class UserProfile(models.Model):
         'address', max_length=100, blank=True, default='')
     image = models.ImageField(
         upload_to='images/%Y/%n', default='images/default.png', max_length=100, verbose_name='profile_img')
+
+    class Meta:
+        verbose_name = 'Username'
+        verbose_name_plural = verbose_name + 's'
+    
+    def __str__(self) -> str:
+        return self.owner.username
