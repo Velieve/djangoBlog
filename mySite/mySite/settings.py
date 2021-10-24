@@ -30,6 +30,10 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+AUTHENTICATION_BACKENDS = [
+    'users.views.MyBackend',
+]
+
 
 INSTALLED_APPS = [
     'users',
@@ -135,3 +139,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_HOST = 'smtp.office365.com'
+EMAIL_HOST_USER = 'lwh7749@outlook.com'
+EMAIL_HOST_PASSWORD = 'Guanqingru7'
+EMAIL_PORT = 587
+EMAIL_USE_SSL = True
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

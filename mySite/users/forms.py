@@ -17,8 +17,8 @@ class LoginForm(forms.Form):
 
 
 class RegisterForm(forms.ModelForm):
-    username = forms.CharField(label='Username', min_length=8, widget=forms.TextInput(
-        attrs={'class:': 'input', 'placeholder': 'Username/Email'}))
+    email = forms.EmailField(label='Email', min_length=8, widget=forms.EmailInput(
+        attrs={'class:': 'input', 'placeholder': 'Email'}))
     password = forms.CharField(label='Password', min_length=8, widget=forms.PasswordInput(
         attrs={'class:': 'input', 'placeholder': 'Password'}))
     password1 = forms.CharField(label='Repeat your password', min_length=8, widget=forms.PasswordInput(
@@ -26,16 +26,16 @@ class RegisterForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('username', 'password')
+        fields = ('email', 'password')
 
-    def clean_username(self):
-        username = self.cleaned_data.get('username')
-        exists = User.objects.filter(username=username).exists()
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        exists = User.objects.filter(email=email).exists()
         if exists:
-            raise forms.ValidationError('User already exists.')
-        return username
+            raise forms.ValidationError('Email already exists.')
+        return email
 
-    def clean_password(self):
-        if self.cleaned_data.get('password')!= self.cleaned_data.get('password1'):
-            raise forms.ValidationError('Error: Review your passwords.')
+    def clean_password1(self):
+        if self.cleaned_data['password'] != self.cleaned_data['password1']:
+            raise forms.ValidationError('两次密码输入不一致！')
         return self.cleaned_data['password1']
