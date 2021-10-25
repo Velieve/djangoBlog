@@ -22,3 +22,11 @@ def send_register_email(email, send_type='register'):
         send_status=send_mail(email_title, email_body, 'lwh7749@outlook.com',[email])
         if send_status:
             pass
+
+    elif send_type == 'forget':
+        email_title = 'Link to reset password'
+        email_body= 'Click to reset your account: http://127.0.0.1:8000/users/forget_pwd_url/{0}'.format(code)
+        send_status=send_mail(email_title, email_body, 'lwh7749@outlook.com',[email])
+        if send_status:
+            pass
+    

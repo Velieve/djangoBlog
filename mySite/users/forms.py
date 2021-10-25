@@ -39,3 +39,13 @@ class RegisterForm(forms.ModelForm):
         if self.cleaned_data['password'] != self.cleaned_data['password1']:
             raise forms.ValidationError('两次密码输入不一致！')
         return self.cleaned_data['password1']
+
+
+class ForgetPwdFrom(forms.Form):
+    email = forms.EmailField(label='Enter your email address: ', min_length=4, widget=forms.EmailInput(
+        attrs={'class': 'input', 'placeholder': 'Username/Email'}))
+
+
+class ModifyPwdForm(forms.Form):
+    password = forms.CharField(label='New password', min_length=8, widget=forms.PasswordInput(
+        attrs={'class': 'inout', 'placeholder': 'Enter your password.'}))

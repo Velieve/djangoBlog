@@ -14,6 +14,8 @@ class UserProfile(models.Model):
         User, on_delete=models.CASCADE, verbose_name='user')
     nickname = models.CharField(
         'nickname', max_length=23, blank=True, default='')
+    desc = models.TextField('Description:', max_length=200,blank=True,default='')
+    signa = models.TextField('Signature',max_length=100,blank=True,default='')
     birthday = models.DateField('birthday', null=True, blank=True)
     gender = models.CharField('gender', max_length=6,
                               choices=USER_GENDER_TYPE, default='')
